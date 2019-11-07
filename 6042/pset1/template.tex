@@ -1,0 +1,179 @@
+\documentclass{6042}
+
+\author{Ian Miller}
+\problemset{1}
+
+
+\begin{document}
+
+
+
+
+
+\problem{1}{None}}
+
+\textit{P or Q or R}  = \textbf{P1}
+
+\textit{(P and NOT(Q)) or (Q and NOT(R)) or (R and NOT(P)) or (P and Q and R)}  = \textbf{P2}
+\begin{center}
+
+    \begin{tabular}{ |c|c|c|c|c| } 
+     \hline
+     P & Q & R & P1 & P2\\ 
+     True & True & True & True & True \\ 
+     True & True & False & True & True \\
+     True & False & True & True & True \\
+     True & False & False & True & True \\
+     False & True & True & True & True \\ 
+     False & True & False & True & True \\
+     False & False & True & True & True \\
+     False & False & False & False & False \\
+     \hline
+    \end{tabular}
+\end{center}
+
+The first 3 columns represent every combination of P and Q and R boolean values.
+
+Since in every case, P1 and P2 are the same boolean value, they must be equivalent.
+
+
+
+
+
+\problem{2}{None}
+
+"Prove by contradiction that the number x = sqrt(3) + sqrt(2) is irrational."
+
+Assume that x is rational if $x = \sqrt{3} + \sqrt{2}$. That would mean $\sqrt{3} + \sqrt{2}$ is rational because any rational squared is rational.
+\begin{center}
+$(\sqrt{3} + \sqrt{2})^2 = 5 + \sqrt{6}$
+\end{center}
+But $\sqrt{6}$ is irrational so that means the assumption that "$\sqrt{3} + \sqrt{2}$ is rational" is incorrect.
+
+Therefore, $\sqrt{3} + \sqrt{2}$ is irrational. QED
+
+
+
+
+
+\problem{3}{None}
+
+\problempart{a}
+"\textit{A iff B}" is equivalent to "\textit{(A and B) or (not(A) and not(B))}"
+Both of these statements only return True when A and B are the same.
+
+"\textit{A xor B}" is equivalent to "\textit{(A and not(B)) or (not(A) and B)}"
+Both of these statements only return True when A and B are the same.
+
+I just proved that "xor" and "iff" can be derived from and, or, and not. Therefore, every propositional formula is equivalent to an AND-OR-NOT formula.
+
+\problempart{b}
+"And" gates can be made by "NOR" gates. "NOR" gates return True if and only if all inputs are False. "NOR" gates can be constructed using only "Not" and "or". Therefore, "And" can be constructed using only "Not" and "or".
+
+\problempart{c}
+"NAND" gates are similar to "NOR" gates in that every other kind of logical operator can be constructed by this single gate. "NAND" gates are equivalent to \textit{not(A and B)}
+
+
+
+
+
+
+\problem{4}{Julian Hamelberg, Andy Kaspers}
+
+Case 1: $x <= -4$
+
+In this case, f(x) DOES fall in between -7 and 3, inclusive. 
+
+$2 * | x + 2 | = -2 * (x + 2) = -2x - 4$
+
+$- | x - 3 | = - (-x + 3)$
+
+$- | x + 4 | = x + 4$
+
+$f(x) = -2x - 4 - (-x + 3) + (x + 4) = 3$
+
+
+Case 2: $-4 < x <= -2$
+
+In this case, f(x) DOES fall in between -7 and 3, inclusive.
+
+$2 * | x + 2 | = -2 * (x + 2) = -2x - 4$
+
+$- | x - 3 | = x - 3$
+
+$- | x + 4 | = -(x + 4)$
+
+$f(x) = -2x - 4 + (x - 3) - (x + 4) = -2x - 11$
+
+$-2x - 11$ will always fall in between -7 and 3, inclusive if x meets this case's requirements.
+
+
+Case 3: $-2 < x < 3$
+
+In this case, f(x) DOES fall in between -7 and 3, inclusive.
+
+$2 * | x + 2 | = 2x + 4$
+
+$- | x - 3 | = x - 3$
+
+$- | x + 4 | = -(x + 4)$
+
+$f(x) = 2x + 4 + (x - 3) - (x + 4) = 2x - 3$
+
+$2x - 3$ will always fall in between -7 and 3, inclusive if x meets this case's requirements.
+
+
+Case 4: $x >= 3$
+
+In this case, f(x) DOES fall in between -7 and 3, inclusive.
+
+$2 * | x + 2 | = 2x + 4$
+
+$- | x - 3 | = 3 - x$
+
+$- | x + 4 | = - (x + 4)$
+
+$f(x) = 2x + 4 + 3 - x - (x + 4) = 3$
+
+
+These cases are exhaustive. In all 4 cases, the proposition stated in the problem holds. QED
+
+
+
+
+
+
+\problem{5}{None}
+
+\problempart{a}
+$\exists{x}\exists{y}\exists{z}. x^3 + y^3 + z^3 = 42$
+
+Domain of discourse is all integers.
+
+\problempart{b}
+$\forall{x}$. ((x mod 7 == 0) $\implies (\forall{a, b}$. (a * b = x) AND (a = 1 or b = 2))
+
+Domain of discourse is all natural numbers (not including 0)
+\problempart{c}
+P1 = $\forall{a, b}$. (a * b = x) AND (a = 1 or b = 2)
+
+P1 is the proof for prime-ness
+
+$\exists{n}$.NOT($\exists{x}$.((n mod x == 0) AND (P1(x)))
+
+Domain of discourse is all natural numbers (not including 0)
+
+\problempart{d}
+P1 = $\forall{a, b}$. (a * b = x) AND (a = 1 or b = 2)
+
+P1 is the proof for prime-ness
+
+$\exists{x, y}.\forall{a}$.(P1(x) AND P1(y) AND (abs(x-y) = 2) AND (x > a))
+
+Domain of discourse is all integers.
+
+
+
+
+\end{document}
+

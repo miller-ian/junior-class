@@ -1,0 +1,166 @@
+\documentclass{6042}
+
+\author{Ian Miller}
+\problemset{1}
+
+
+\begin{document}
+
+
+\problem{1}{None}
+
+Let P(n) represent the following proposition: $\sum_{n=0}^{\infty} {i^3} = (\sum_{n=0}^{\infty} {i})^2$ 
+
+P(n) can be rewritten as 
+
+$(n^2(n+1)^2)/4 = (n*(n+1)/2)^2$
+
+\textbf{Base case:}
+
+n = 0
+
+P(n) holds for this base case
+
+\textbf{Inductive Step:}
+
+Prove that P(n) implies P(n+1)
+
+$((n+1)^2(n+2)^2)/4 = ((n+1)*(n+2)/2)^2$
+
+$((n+1)^2(n+2)^2)/4 = (n+1)*(n+1)*(n+2)*(n+2)/4 = (n^4 + 6n^3 + 13n^2 + 12n + 4)$
+
+$((n+1)*(n+2)/2)^2 = ((n+1)*(n+2)/2)^2 = ((n^2 + 3n + 2)/2)^2 = (n^4 + 6n^3 + 13n^2 + 12n + 4)$
+
+Thus, $((n+1)^2(n+2)^2)/4 = ((n+1)*(n+2)/2)^2$.
+
+Therefore, P(n) implies P(n+1) and that means that P(n) holds by Induction. QED
+
+
+\problem{2}{None}
+
+\problempart{a}
+
+Assertion: $x = \emptyset$
+
+$(x = \emptyset) := \forall{z}.(z$ NOT $\in{x})$
+
+\problempart{b}
+
+Assertion: $x \subseteq{y}$
+
+$(x \subseteq{y}) := \forall{z}(z \in{y}$ IF $z \in{x})$
+
+\problempart{c}
+
+Assertion: $x = y \cap{z}$
+
+$(x = y \cap{z}) := \forall{a}(a \in{x}$ IFF $(a \in{y}$ AND $a \in{z})$
+
+\problempart{d}
+
+Assertion: $|x| = 1$
+
+$(|x| = 1) := \forall{a, b}.((a = b$ IF $(a\in{x}$ AND $b\in{x})$ AND NOT$(x = \emptyset))$
+
+\problem{3}{None}
+
+For the sake of contradiction, assume that there is a nonempty set P such that 
+
+$P ::= {x >= 50}$
+
+This means that x cannot be represented as a linear combination of 7, 11, and 13. If x cannot be represented as a sum of nonnegative integer multiples of 7, 11, and 13, then neither can x - 7. 
+By WOP, C contains a least number p. $p >= 51$ because $x = 50$ can be represented as a linear combo of 7, 11, and 13.
+Therefore, x cannot be greater than 56 because if $m = 57$, then $m - 7$ would be in C, which is a contradiction since x is the least element of P.
+
+50 = (13 * 3) + (11)
+
+51 = (11 * 4) + (7)
+
+52 = (13 * 4)
+
+53 = (11) + (7 * 6)
+
+54 = (13 * 2) + (7 * 4)
+
+55 = (11 * 5)
+
+56 = (7 * 8)
+
+QED
+
+
+
+\problem{4}{Andy Kaspers}
+
+Proof by contradiction
+
+\textbf{Suppose $\sqrt{2}$ is rational.} 
+
+In that case, there exists a non-empty set $S:{m \in{\N}} |$
+\textit{the product of} $(\sqrt{2} - 1)$ \textit{and m is a nonnegative integer}
+
+Then, by the WOP, there must exist a smallest element q that is the smallest integer such that $(\sqrt{2} - 1)*q$ is a nonnegative integer.
+
+\textbf{Let p =  $(\sqrt{2} - 1)*q$ where $0 < p < q$ and both q and p are positive integers.}
+
+$((\sqrt{2} - 1)/(\sqrt{2} - 1)) * (p/(\sqrt{2} - 1)) = q$
+
+$((\sqrt{2} - 1)*p) = q$
+
+We know that since q and p are positive integers and $q > p$, that $((\sqrt{2} - 1)*p)$ is a positive integer.
+
+However, $p < q$ and we said above that q is the smallest possible element such that $(\sqrt{2} - 1) * q$ is a nonnegative integer.
+
+Yet here $((\sqrt{2} - 1)*p)$ is a nonnegative integer and $p > q$. This is a contradiction!
+
+By proof of contradiction, we know that $\sqrt{2}$ is irrational. QED
+
+
+
+\problem{5}{Julian Hamelberg}
+
+\problempart{a}
+
+Let P(n) represent the following proposition: "from any state, the algorithm terminates after at most $1 + \log_2s$ steps.
+
+base case:
+
+P(1) = 1 step, which holds true
+
+For P(n+1), if n + 1 is even, it will take P(n+0.5) + 1 steps.
+
+So, $1 + \log_2{(n+1)/2} + 1 = 2 + \log_2{n+1} -1 = 1 + \log_2{n+1}$
+
+For P(n+1), if n + 1 is odd, it will take P(n/2) + 1 steps.
+
+So, $1 + \log_2{n/2} + 1 = 2 + \log_2{n} - 1 = 1 + \log_2{n}$ which is less than $1 + \log_2{(n+1)}$
+
+Therefore, by Strong Induction, P(n+1) is true anytime $n > 0$. QED
+
+\problempart{b}
+
+Let P(n) represent the following proposition: $rs + a = xy$ is an invariant of the procedure outlined in Problem 1-5
+
+The following is a proof that P(n) is true.
+
+Proof by cases:
+
+\textbf{Case 1: s is even}
+
+r becomes 2r, s becomes s/2, a remains a
+
+$2r * s/2 + a = rs + a = xy$
+
+\textbf{Case 1: s is odd}
+
+r becomes 2r, s becomes (s-1) / 2 and a becomes a+r
+
+$2r * (s-1)/2 + (a+r) = rs -r + a + r = rs + a = xy$
+
+These cases are exhaustive and in all cases, $rs + a = xy$. Therefore P(n) holds. QED
+
+\problempart{c}
+In every state, rs + a = xy. In every state, the algorithm terminates and s quickly becomes 0. There will be a state where r*0 + a = xy.
+Therefore, we can conclude that the algorithm computes the product xy.
+\end{document}
+

@@ -1,0 +1,215 @@
+\documentclass{6042}
+
+\author{Ian Miller}
+\problemset{5}
+
+
+\begin{document}
+
+
+\problem{1}{None}
+
+
+\problempart{a}
+Fuller House = (4 cards of one rank) + (2 cards of another rank)
+
+Let $P =$ the chance of getting a Fuller House if you randomly flipped over 6 cards
+
+Let $T =$ the total number of 6-card hands ($52*51*50*49*48*47/6!$)
+
+The number of possible Fuller House hands is equivalent to:
+
+$P * T$
+
+We already have T so in order to solve the problem, so we only need to calculate P.
+
+$P = (1 * (3/51) * (2/50) * (1/49)) * ((44/48) * (3/47))$
+
+
+
+\problempart{b}
+
+I'm going to use the same approach as in part A.
+
+Three Pair = (2 cards of one rank) + (2 cards of another rank) + (2 cards of another rank)
+
+Let $T =$ the total number of 6-card hands ($52*51*50*49*48*47/6!$)
+
+The number of possible Three Pair hands is equivalent to:
+
+$P * T$
+
+We already have T so in order to solve the problem, so we only need to calculate P.
+
+$P = (1 * (3/51)) * ((48/50) * (3/49)) * ((44/48) * (3/47))$
+
+\problempart{c}
+
+It's a little harder to calculate the probability the same way as in part A and B.
+
+There are 2 variables I'm worried about to find the total number of Imperial Flushes:
+
+1- High card
+
+2- Suit 
+
+For each high card in an Imperial Flush, there are 3 others possible because suit can be changed.
+
+Since there are 9 possible high cards (6, 7, 8, 9, 10, J, Q, K, A), there are $4 * 9 = 36$ possible Imperial Flushes.
+
+\problempart{d}
+
+I'm going to use the same approach as in part A and B.
+
+Basically-a-Flush = AT LEAST 5 cards in the hand have the same suit
+
+Let $T =$ the total number of 6-card hands ($52*51*50*49*48*47/6!$)
+
+The number of possible Basically-a-Flush hands is equivalent to:
+
+$P * T$
+
+We already have T so in order to solve the problem, so we only need to calculate P.
+
+$P = (1 * (12/51) * (11/50) * (10/49)) * (9/48) * 1)$
+
+$P = (12/51) * (11/50) * (10/49)) * (9/48)$
+
+\problem{2}{None}
+
+
+The pigeonholes are the following: for each odd number x in the set ${1, 2, 3,...., 2n}$, we
+can make the set $S_x = {x, 2x, 4x, 2^y(x),...}$
+
+This gives us n pigeonholes. The problem dictates that we have to pick n+1 numbers.
+Any pair of numbers that satisfies the problem constraint (quotient is a power of two) will be in the same set $S_x$.
+
+Therefore, any pair of numbers will contain one number that divides the other. Each number that we pick is a pigeon. And because of 
+each number will be in the same $S_x$ as another number that divides it, its quotient will be a power of two. 
+
+Therefore, we have n+1 pigeons and n pigeonholes.
+
+\problem{3}{Sophia Chan, Julian Hamelberg}
+
+
+\problempart{a}
+
+First, we must construct a bijection to represent donut selection. This bijection will map the set of all possible
+ways to select n donuts from k possible flavors to the set of distinct n+k-1 bit sequences with n zeroes and k-1 ones.
+
+There are n+k-1 bits regardless of how the zeroes are arranged, assuming there are k-1 ones. That sequence is an element of the set of all
+distinct n+k-1 bit sequences with n zeroes and k-1 ones.
+
+This is a bijection because every possible arrangement of ones and zeroes is mapped to from one of the elements in the set of all possible ways to select
+n donuts from k flavors. Therefore, we can say that there are 
+(
+\(
+  {\begin{array}{c}
+   n+k-1\\
+   k-1\\
+  \end{array} }
+\)
+)
+
+ways to select n donuts from k possible flavors.
+
+\problempart{b}
+
+First, we must construct a bijection to represent donut selection. This bijection will map the set of all possible
+ways to select 12 donuts from 5 possible flavors to the set of distinct 11 bit sequences with 7 zeroes and 4 ones.
+
+If we are required to select 1 donut in each flavor, that means that 5 of the zeroes are already accounted for. This means that
+you only have flexibility with those last 7 donuts. The bit length is now 11. In that 11 bit sequence, there will 7 zeroes and 4 ones
+meaning that there are (
+   \(
+     {\begin{array}{c}
+      11\\
+      4\\
+     \end{array} }
+   \)
+   )
+ways to select 12 donuts from 5 flavors, based on our work from part A. 
+
+\problempart{c}
+
+In order for there to be either 0 or an even number of donuts per flavor in our selection, we must pick donuts 2 at a time.
+
+This is equivalent to making the selection size 6 (half of 12). Therefore according to the stars and bars formula in part A,
+there are \(
+   {\begin{array}{c}
+    10\\
+    4\\
+   \end{array} }
+ \)
+ )
+ways to make a selection that meet the problem constraints. 
+
+\problempart{d}
+
+The number of ways to select 12 donuts from 5 flavors requiring 3 distinct flavors is equivalent to the total 
+number of ways to select 12 donuts from 5 flavors minus the number of ways to select 12 donuts from 5 flavors with at most 2 flavors.
+
+The total number of ways to select 12 donuts from 5 flavors with no constraint is the following:
+
+(
+\(
+  {\begin{array}{c}
+   12+5-1\\
+   5-1\\
+  \end{array} }
+\)
+)
+
+The total number of ways to select 12 donuts from 5 flavors with at most 2 flavors is the following:
+
+(
+\(
+  {\begin{array}{c}
+   12+2-1\\
+   2-1\\
+  \end{array} }
+\)
+)
+*
+(
+\(
+  {\begin{array}{c}
+   5\\
+   2\\
+  \end{array} }
+\)
+)
+
+Therefore, the total number of ways to select 12 donuts from 5 flavors, if we required
+at least 3 distinct flavors is 
+
+
+(
+\(
+  {\begin{array}{c}
+   12+5-1\\
+   5-1\\
+  \end{array} }
+\)
+)
+-
+(  
+(
+   \(
+     {\begin{array}{c}
+      12+2-1\\
+      2-1\\
+     \end{array} }
+   \)
+   )
+   *
+   (
+   \(
+     {\begin{array}{c}
+      5\\
+      2\\
+     \end{array} }
+   \)
+   )
+)
+\end{document}

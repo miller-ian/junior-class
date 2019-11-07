@@ -1,0 +1,252 @@
+\documentclass{6042}
+
+\author{Ian Miller}
+\problemset{3}
+
+
+\begin{document}
+
+
+\problem{1}{None}
+
+
+\problempart{a}
+Let P(n) represent the following claim: For every $n \in$ the set of positive integers, if graph G has n vertices and n - 1 edges, then G has no cycles.
+
+I will now provide a counterexample to show that P(n) is false.
+
+The counterexample graph is made up of 5 nodes, 4 of which are connected by edges. The 5th node is not connected to any of the other nodes.
+
+\begin{figure}[h!]
+    \includegraphics[width=0.6\linewidth]{prob1graph.jpg}
+
+\end{figure}
+
+As seen in the figure above, E is not connected to A, B, C, or D, while each of those 4 nodes are connected to 2 of their neighbors.
+
+This graph satisfies the antecedent of P(n). There are n=5 nodes and n-1 = 4 edges. 
+However, this graph DOES have a cycle. 
+
+A-B-C-D-A is a cycle. Therefore, P(n) is false.
+
+\problempart{b}
+
+The logical error occurs in the 5th sentence of the Inductive Step writeup.
+
+"Since G'' has n edges and G has n - 1 edges, it must be that v has degree 1 in G''."
+
+This is an incorrect statement. It is true that v can have \textit{at most} a degree 1, but it can also have a degree of 0.
+
+If v has a degree of 0, that means it's not connected to the rest of the graph, and cycles can be made by adding the extra edge (allowed by the addition of node v) to an already-connected node to make that node have a degree of 2.
+
+This would allow cycles to be made.
+
+
+
+\problem{2}{None}
+
+
+\problempart{a}
+
+\begin{figure}[h!]
+    \includegraphics[angle=-90, origin=c, width=0.6\linewidth]{prob2graph.jpg}
+
+\end{figure}
+
+\problempart{b}
+
+Proof by Contradiction
+
+Let P(n) represent the following proposition: "If a partial ranking R does not include player v, then it is possible to make a
+longer partial ranking by inserting v somewhere into sequence R (without otherwise rearranging R)."
+
+Assume P(n) is false.
+
+For the purposes of this proof, we will reference the graph shown in part A 
+and let partial ranking R = A-B-C
+
+We will also let v represent node E in the above graph.
+
+E is currently not part of the partial ranking R. 
+Because we are assuming P(n) is false, it should not be possible to add E to R.
+
+But it is possible to make a longer partial ranking by inserting node E at the end of partial ranking R.
+
+$R_new = A-B-C-E$
+
+We have found a contradiction to the proposition that P(n) is false. Therefore, P(n) is true.
+
+\problempart{c}
+
+Proof by Induction
+
+Let P represent the following proposition: "Every tournament digraph has a full ranking."
+
+Let G(n) represent the following proposition: "A tournament digraph of size of n nodes has a full ranking."
+
+Base case: n = 1
+
+A tournament digraph necessarily has a full ranking. There is no way to have a single node digraph without that single node being reached by itself. In other words,
+there is no way that single node is not in the full ranking.
+
+Inductive Hypothesis: Assume that G(n) has a full ranking.
+
+Inductive Step:
+
+If G(n) has a full ranking we must prove that G(n+1) also has a full ranking. Let g = the graph that underlies G(n).
+
+If you add a single node v to g, you will always have a directed edge that will either add v to the front or end of the ranking or lead from another node to v to the end node.
+
+We proved G(1) holds.
+
+G(2) introduces a new node that can be placed at the end of the full ranking (directed edge from node 1 to node 2), meaning that G(n+1) holds.
+
+
+Therefore P holds by induction. QED
+
+\problem{3}{None}
+
+
+\problempart{a}
+
+This prize-selection process can be modeled as a bipartite matching problem.
+
+The left vertices L would represent the instructors that are capable of giving out 1 prize each.
+
+The right vertices R would represent all of the first-year students at Inst-Chute.
+
+The edges E would represent a prize given from the that instructor to the corresponding student.
+
+
+It's possible to hand out prizes in the desired way iff the graph has a matching that includes all left vertices L.
+
+This is because all instructors must give a prize. But according to institute policy, no student is allowed to receive a prize from
+2 different instructors.
+
+This requires there to be a matching between L vertices and R vertices. If there isn't a matching, either not all professors gave out prizes or a student received prizes from 2 different instructors.
+
+\problempart{b}
+
+According to Hall's Theorem, for a set of L instructors and R students, if $R >= L$, then a matching is possible.
+
+In other words, there is a matching that covers L iff for every subset $X \subset{L}, N(X) >= |X|$ where N(X) is the number of students in the class of X 
+
+According to the problem constraints, there are more than enough students to ensure a matching is possible.
+
+\problempart{c}
+
+The fact that each vertex in L has a higher degree than each vertex in R means that the graph is degree-constrained.
+
+Take an arbitrary vertex x in L and an arbitrary vertex y in R. There are more edges originating from x than there are incident on y.
+
+Let A = the number of edges incident on x
+
+Let B = the number of edges incident on y
+
+By definition of degree-constrained, $A >= B$
+
+And according to Hall's Theorem, a matching that covers L iff for every subset $X \subset{L}, N(X) >= |X|$ where N(X) is the number of students in the class of X.
+
+This is show to hold based on our degree-constrained environment.
+
+\problempart{d}
+
+\begin{figure}[h!]
+    \includegraphics[width=0.6\linewidth]{prob3graph.jpg}
+
+\end{figure}
+
+This graph is not degree constrained since node X has the highest degree of any nodes in the graph.
+
+This graph is an example of a bipartite graph that has a perfect matching but is not degree constrained.
+
+\problem{4}{Julian Hamelberg}
+
+
+\problempart{a}
+
+\begin{figure}[h!]
+    \includegraphics[width=0.6\linewidth]{prob4graph.jpg}
+
+\end{figure}
+
+\textbf{For node A:}
+
+Even: A-C-D-B-A
+
+Odd: A-C-B-A
+
+\textbf{For node B:}
+
+Even: B-C-D-A-B
+
+Odd: B-C-D-B
+
+\textbf{For node C:}
+
+Even: C-A-D-B-C
+
+Odd: B-C-D-B
+
+\textbf{For node D:}
+
+Even: D-C-B-A-D
+
+Odd: D-A-B-D
+
+\problempart{b}
+
+The graph I came up with is just a single node. I didn't think that a picture was necessary.
+
+This graph has an odd-length cycle of length 1 and no even length cycle at all. Both constraints are satisfied.
+\problempart{c}
+
+Proof by Induction
+
+Let P represent the following proposition: "If a directed graph has an odd-length closed walk, prove that it must have an
+odd-length cycle"
+
+Let G(n) = a graph that has n nodes
+
+Base case: n = 0
+
+The closed walk is odd and is necessarily an odd cycle.
+
+Inductive Step: 
+
+Suppose we have a closed odd walk v,...,$v_{2k+1}$ with n + 1 vertices, and that every closed walk with no more than n repeated vertices contains an odd cycle.
+
+Let $1 <= i < j <= 2k + 1$ be such that $v_{i} = v_{j}$ and the sub-walk $v_{i}, v_{i+1},...., v_{j-1}$ has no repeated vertices.
+
+In the case that j-i is even, the above cycle is odd.
+
+In the case that j-i is odd, we get a closed walk in the graph.
+
+By assuming that our closed walk has a length that is an odd number, the closed odd walk must have an odd cycle. And, that odd cycle must be in the original walk. QED
+
+\problem{5}{Sophia Chan}
+
+
+\problempart{a}
+
+\begin{figure}[h!]
+    \includegraphics[angle=-90, origin=c, width=0.6\linewidth]{prob5graph.jpg}
+
+\end{figure}
+
+\problempart{b}
+
+(According to Piazza this could be more of an informal proof)
+
+G cannot be colored with 3 colors.
+
+You cannot color the inner pentagon of 5 nodes (the inner 6 nodes minus the very middle node) with less than 3 colors because
+the two child nodes of each outer pentagon node must be different colors, because they themselves have two different-colored parents.
+
+So, you need to use 3 colors to color the nodes that make up that inner pentagon. And since all of those nodes count the middle node as a child,
+the child must have a different color than all of its parents. Therefore, a 4th color must be used to color the very middle node.
+
+Therefore, 4 colors (at least) must be used to color G.
+
+\end{document}
+

@@ -1,0 +1,158 @@
+\documentclass{6042}
+
+\author{Ian Miller}
+\problemset{6}
+
+
+\begin{document}
+
+
+\problem{1}{None}
+
+
+\problempart{a}
+
+Ignoring vowels, there are $21!$ ways to arrange consonants.
+
+There are 21 possible landing spots for a vowel (in between each consonant). And there are 5 vowels to assign.
+
+So, there are $\frac{(21!)^2}{16!}$ possible ways to order the 26 letters of the alphabet so that no two vowels appear consecutively and the last letter is not a vowel.
+
+\problempart{b}
+
+We are going to attach 2 arbitrary consonants to the end of each vowel. So we have:
+
+(a, C1, C2)
+
+(e, C3, C4)
+
+(i, C5, C6)
+
+(o, C7, C8)
+
+(u, C9, C10)
+
+There are (21 choose 10) assignments for C1-C10. That's equivalent to 352,716.
+
+Once we assign C1-C10, the problem becomes very similar to part A. We have 11 consonants remaining. There are 11! ways to arrange those consonants.
+
+There are 11! ways to arrange the remaining consonants, relative to each other.
+
+There are 12 possible landing spots for the 3-letter units. So, there are $\frac{352,716 * 11! * 12!}{5!}$ possible ways to order the
+26 letters of the alphabet so that there are at least two consonants immediately following each vowel.
+
+\problempart{c}
+
+$\frac{(2n)!}{2^nn!}$
+
+If you arrange all students in a single line, and take the first two off the front of the line,
+you can generate a lineup. There are $(2n)!$ possible lineups. But some of those lineups will repeat.
+So we need to divide by something in order to shave off those duplicates (since order doesn't matter).
+
+As you go down that initial single line, there are $2^n$ ways you could order each pair (i.e. AB becomes BA while all the other pairs remain the same).
+
+You can also rearrange the pairs relatve to each other (i.e. AB CD could begin CD AB). There are n! ways you could do that.
+
+Thus, we get $\frac{(2n)!}{2^nn!}$ ways to pair 2n students.
+
+\problempart{d}
+
+This question is essentially asking us to find the total number of combinations (with replacement) of elements that make up a subset of a larger set of elements.
+
+This is also called multichoose.
+
+There are $\frac{(n + 10-1)!}{10!(n-1)!}$ types of n-digit sequences.
+
+
+\problem{2}{Albert Garcia}
+
+\problempart{a}
+The pigeons are represented as the 82 rows. 
+
+The pigeonholes are represented as the total number of colorings for each row
+
+Each row has 4 boxes and, with 3 possible colors, there are 81 total colorings for that row.
+
+Since there are 81 pigeonholes and 82 pigeons, at least 2 rows must have the same coloring.
+
+\problempart{b}
+
+We know that 2 rows must have the same coloring.
+
+And since there are only 3 colors for 4 boxes, in every row, there must be a repeated color.
+
+This means that for those 2 repeated rows, a rectangle can be made where the 4 corners of that rectangle are the same color.
+
+\problempart{c}
+In this situation, the pigeons represent the 19 rows.
+
+The pigeonholes represent the total number of ways that rows can be arranged with at least 2 of the same colors. 
+
+As mentioned in part b, at least 1 color must be repeated in a row. There are also 6 ways to pick two positions in a row of length 4 and color them the same.
+That means that the total number of ways we can arrange rows with at least two of the same color is 18.
+
+We have more pigeons than pigeonholes. Part B holds even which R only has 19 rows.
+
+\problem{3}{Textbook, page 334}
+
+\problempart{a}
+In order to figure out how many 10-digit passwords don't contain forbidden sequences, we'll find the total number of 
+10-digit passwords possible and subtract the number of passwords that do contain a forbidden sequence.
+
+total number of 10-digit passwords = 10!
+
+total number of passwords that contain "6042" = 7*6! = 7!
+
+total number of passwords that contain "18062" = 6*5! = 6!
+
+total number of passwords that contain "38476" = 6*5! = 6!
+
+Total number of passwords that don't contain forbidden sequences = 10! - 7! - 6! - 6!
+
+\problempart{b}
+Like in part A, in order to figure out how many 10-digit passwords don't contain forbidden sequences, we'll find the total number of 
+10-digit passwords possible and subtract the number of passwords that do contain a forbidden sequence.
+
+total number of 10-digit passwords = $10^{10}$
+
+total number of passwords that contain "6042" and not other 2 forbidden passwords = $(7 * (10^6)) - 12$
+
+total number of passwords that contain "18062" and not other 1 forbidden password = $(6 * (10^5)) - 2$
+
+total number of passwords that contain "38476" = $(6 * (10^5))$
+
+Total number of passwords that don't contain forbidden sequences = $10^{10} - ((7 * (10^6)) - 12) - ((6 * (10^5)) - 2) - (6 * (10^5))$
+
+
+
+\problem{4}{Textbook, page 342}
+
+\problempart{a}
+\textit{Proof.} We give a combinatorial proof. Let \textit{S} be the set of all k-element groups that satisfy the following 2 conditions:
+
+1- each element can be selected from n choices, and
+2- 1 element from within each k-element subset must be singled out as the "leader" of that subset
+
+By counting, we determine that in this situation, $S = \sum_{k=0}^{n} k * (n$ choose $k)$
+
+From another perspective, we can select the "leader" of a subset in $n$ ways. Following that pick, there are $2^(n-1)$ ways to select the remaning elements.
+In this way, there are $n * 2^(2n-1)$ ways to get \textit{S}.
+
+Equating these two expressions for $|S|$ proves that $\sum_{k=0}^{n} k * (n$ choose $k) = n * 2^(2n-1)$
+$n * 2^(n-1)$ since there are $2^(n-1)$ ways to choose k elements out of a set of n elements. 
+
+QED
+\problempart{b}
+\textit{Proof.} We give a combinatorial proof. Let \textit{S} be the set of all n-element groups that can be created from a set of 2n elements.
+We can create $(2n$ choose $n)$ subsets so in this way, $S = (2n$ choose $n)$.
+
+From another perspective, $(n $choose $k) = (n$ choose $(n-k))$. 
+
+So, $\sum_{k=0}^{n} (n $choose $k) (n$ choose $n-k) = \sum_{k=0}^{n} (n$ choose$ k) (n$ choose $k)$
+
+which is equivalent to (2n choose n). 
+
+Equating these two expressions proves that $(2n$ choose $n) = \sum_{k=0}^{n} (n $choose $k) (n$ choose $n-k)$
+
+QED
+\end{document}
