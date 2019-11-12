@@ -11,188 +11,130 @@
 
 
 \problempart{a}
+Independence means that $P(X|Y) = P(X)$ for all values of X and Y.
 
-Let A represent the size of the set of hands that have at least 2 aces.
+If $C = 3$, the following table shows the decimal probabilities for each event:
+$\begin{bmatrix}
+    H1 & 1.0 \\
+    H2 & 1.0 \\
+    H3 & 1.0 \\
+    M & 1.0 \\
+    S & 1.0
+\end{bmatrix}$
 
-Let B represent the size of the set of hands that have at least 1 ace.
+If $C = 1$, the following table shows the decimal probabilities for each event:
+$\begin{bmatrix}
+    H1 & 0.33 \\
+    H2 & 0.33 \\
+    H3 & 0.33 \\
+    M & 0.0 \\
+    S & 1.0
+\end{bmatrix}$
 
-$Pr[A | B] = \frac{Pr[A \cap B]}{Pr[B]}$
+If $C = 0$, the following table shows the decimal probabilities for each event:
+$\begin{bmatrix}
+    H1 & 0.0 \\
+    H2 & 0.0 \\
+    H3 & 0.0 \\
+    M & 1.0 \\
+    S & 0.0
+\end{bmatrix}$
 
-The number of hands with exactly 1 ace = C = $4 * (48$ choose $12)$
-
-So, B = $(52$ choose $13) - (48$ choose $13)$
-
-So, in A $ = B - C$
-
-Therefore, $Pr[A | B] = \frac{(52 choose 13) - (48 choose 13) - (4 * (48 choose 12))}{(52 choose 13) - (48 choose 13}$
-
-
+For each variable, depending on the value of C, probabilities can change. Therefore, none of the variables are independent of C.
 
 
 \problempart{b}
 
-Let A represent the size of the set of hands that have at least 2 aces (one of which is the ace of spades).
+M and S will be pairwise independent is the following is True:
 
-Let B represent the size of the set of hands that have at least the ace of spades.
+$Pr[M \cap S] = Pr[M] * Pr[S]$
 
-$Pr[A | B] = \frac{Pr[A \cap B]}{Pr[B]}$
+$Pr[M \cap S] = 0.125$
 
-B = (51 choose 12)
+$Pr[M] * Pr[S] = .25 * 0.5 = 0.125$
 
-There are (48 choose 12) hands within B that don't have another ace.
-
-So, A = B - (48 choose 12)
-
-Therefore, $Pr[A | B] = \frac{(51 choose 12) - (48 choose 12)}{(51 choose 12)}$
+Since the independence formula holds True, M and S are pairwise independent.
 
 
-\problem{2}{None}
+\problempart{c}
+$Pr[H1 \cap H2 \cap H3] = Pr[H1 \cap H2 \cap S] = Pr[H2 \cap H3 \cap S] = Pr[H1 \cap H3 \cap S] = 1/8$
+
+Therefore, H1, H2, H3, and S are 3-wise independent.
+
+However, 
+
+In the case that H1, H2, and H3 all equal 1: Pr[C] = 1
+
+In the case that H1, H2, and H3 all equal 0: Pr[C] = 0
+
+Therefore, H1, H2, H3, and S are NOT mutually independent.
+
+\problem{2}{Albert Garcia}
+
+\problempart{a}
+PDF$_{x+1}(a) -> \begin{Bmatrix}
+    2 & 1/3 \\
+    1 & 2/3
+\end{Bmatrix}$
+
+PDF$_{y}(a) -> \begin{Bmatrix}
+    1 & 1/6 \\
+    2 & 1/6 \\
+    3 & 1/6 \\
+    4 & 1/6 \\
+    5 & 1/6 \\
+    6 & 1/6
+\end{Bmatrix}$
+
+Because X and Y are independent, we can calculate the probability density function Z by multiplying
+corresponding matrix elements.
+
+PDF$_{Z}(a) -> \begin{bmatrix}
+    1 & 1/9 \\
+    2 & 1/6 \\
+    3 & 1/9 \\
+    4 & 1/6 \\
+    5 & 1/9 \\
+    6 & 1/6 \\
+    8 & 1/18 \\
+    10 & 1/18 \\
+    12 & 1/18 \\
+\end{bmatrix}$
+
+\problempart{b}
+CDF$_{D}(a) -> \begin{bmatrix}
+    1 & Pr[D <= 1] ~ 0.6666 \\
+    2 & Pr[D <= 2] ~ 0.8888 \\
+    3 & Pr[D <= 3] ~ 0.9629 \\
+    4 & Pr[D <= 4] ~ 0.9876 \\
+    5 & Pr[D <= 5] ~ 0.9958 \\
+    6 & Pr[D <= 6] ~ 0.9986 \\
+    7 & Pr[D <= 7] ~ 0.9995 \\
+    8 & Pr[D <= 8] ~ 0.9998 \\
+    9 & Pr[D <= 9] ~ 0.9999 \\
+    10 & Pr[D <= 10] = 1
+\end{bmatrix}$
+
+For all a's where a is in range of D, $\sum{PDF_{D}(a)} = 1$
+
+Therefore, the probability of rolling a 10 is $1 - \sum_{1}^{9} PDF_{D}(a)$ approximately equals 0.0000508
+
+\problem{3}{None}
 
 \problempart{a}
 
-\begin{figure}[h!]
-    \includegraphics[width=0.6\linewidth]{prob2tree.jpg}
-
-\end{figure}
-
-Pr[Negative Diagnosis but actually have the disease] = 0.08
-
-Pr[Positive Diagnosis and actually have the disease] = 0.12
-
-Pr[Negative Diagnosis and don't have the disease] = 0.72
-
-Pr[Positive Diagnosis but don't have the disease] = 0.08
-
 \problempart{b}
-
-According to my tree diagram, there are 2 possible situations that a bird has the Aggressive Bird Flu.
-
-1- Goose tested positive and actually has disease.
-
-2- Goose tested negative and actually has disease.
-
-Pr["A goose at MIT has Aggessive Bird Flu"] = Pr[1] + Pr[2]
-
-Pr[1] = 0.2 * 0.6
-
-Pr[2] = 0.8 * 0.1
-
-Pr[1] + Pr[2] = 0.12 + 0.08 = 0.2
-
-\problempart{c}
-Let B represent the following statement: "the bird has Aggressive Bird Flu"
-
-Let A represent the following statement: "the bird will receive a negative diagnosis on Dr. Tim's test"
-
-Pr[A|B] = $\frac{Pr[A \cap B]}{Pr[B]}$
-
-Pr[$A \cap B$] = 1 - 0.12 - 0.72 - 0.08 = 0.08
-
-Pr[B] = 0.2 (as determined in part b)
-
-Therefore, there is a $\frac{0.08}{0.2} = 0.4$ chance that a bird who has Aggressive Bird Flu will receive a negative diagnosis.
-
-\problem{3}{Textbook, page 334}
-
-\problempart{a}
-
-\textbf{A beats B}
-
-Pr[A rolls 4] = 0.67
-
-Pr[B rolls 3] = 1
-
-Pr[A beats B] = 0.67
-
-\textbf{B beats C}
-
-Pr[B rolls 3] = 1
-
-Pr[C rolls 2] = 2/3
-
-Pr[B beats C] = 0.67
-
-\textbf{C beats D}
-
-Pr[C rolls 6] = 1/3
-
-Pr[D rolls anything] = 1
-
-Pr[C rolls 2] = 2/3
-
-Pr[D rolls 1] = 1/2
-
-Pr[C beats D] = 1/3 + 1/3 = 0.67
-
-\textbf{D beats A}
-
-Pr[D rolls 5] = 1/2
-
-Pr[A rolls anything] = 1
-
-Pr[D rolls 1] = 1/2
-
-Pr[A rolls 0] = 1/3
-
-Pr[D beats A] = 1/2 + 1/6 = 0.67
-
-
-\problempart{b}
-
-Since you pick first, your opponent will pick only after knowing what die you picked. In part A, we showed that any die can be beat
-by some other die with a 2/3 probability. So no matter what die you pick, there exists some die that will beat that die 2/3 of the time, according
-to my answer for part A.
 
 \problempart{c}
 
-Expected Value for A: (4 * 1/6) + (4 * 1/6) + (4 * 1/6) + (4 * 1/6) + (0 * 1/6) + (0 * 1/6) = 8/3
-
-Expected Value for B: (3 * 1/6) + (3 * 1/6) + (3 * 1/6) + (3 * 1/6)  + (3 * 1/6) + (3 * 1/6) = 3
-
-Expected Value for C: (6 * 1/6) + (6 * 1/6) + (2 * 1/6) + (2 * 1/6) + (2 * 1/6) + (2 * 1/6) = 10/3
-
-Expected Value for D: (5 * 1/6) + (5 * 1/6) + (5 * 1/6) + (1 * 1/6) + (1 * 1/6) + (1 * 1/6) = 3
-
-According to expectation, the optimal choice is C. This is because C has the highest expected value.
 
 \problem{4}{None}
 
 \problempart{a}
 
-The following are the probabilities that you'll \textbf{win}:
-
-Case 1 $->$ Stay: 2/10 = 0.2
-
-Case 2 $->$ Switch: 6/10 = 0.6
-
 \problempart{b}
 
-The following are the probabilities that you'll \textbf{win}:
-
-Case 1 $->$ Stay: 4/8 = 0.5
-
-Case 2 $->$ Switch: 6/8 = 0.75
-
 \problempart{c}
-
-I'll break this problem up into 2 cases:
-
-\textbf{Case 1} (6/21 probability) $->$ Initial pair includes a goat
-
-Win prob if stay: $\frac{6}{21} * 1 = \frac{6}{21}$
-
-Win prob if switch: 0
-
-\textbf{Case 2} (15/21 probability) $->$ Initial pair does not include a goat
-
-Win prob if stay: 0
-
-Win prob if switch: $\frac{1}{2} * \frac{15}{21} = \frac{15}{42}$
-
-
-Overall win prob if stay: $\frac{6}{21}$
-
-Overall win prob if switch: $\frac{15}{42}$
 
 
 \end{document}
